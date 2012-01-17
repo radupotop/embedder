@@ -48,12 +48,15 @@ embedder()
 
 function embedder() {
 
-    len=document.links.length
-    for(i=0; i<len; i++) {
-        a=document.links[i]
+    var len=document.links.length
 
-        if(src=parseHref(a.href)) {
-            iframe = createIframe(src)
+    for(var i=0; i<len; i++) {
+
+        var a=document.links[i]
+        var src=parseHref(a.href)
+
+        if(src) {
+            var iframe = createIframe(src)
             a.appendChild(iframe)
         }
     }
@@ -63,16 +66,17 @@ function embedder() {
 
 function parseHref(href) {
 
-    out = null
+    var len=rules.length
 
-    for each (rule in rules) {
-        pattern = new RegExp(rule.pattern, 'i')
+    for (var i=0; i<len; i++) {
+        var rule = rules[i]
+        var pattern = new RegExp(rule.pattern, 'i')
         if (href.match(pattern)) {
-            pos = href.search(rule.search)
+            var pos = href.search(rule.search)
             if(pos > -1) {
                 pos += rule.search.length
-                id = href.slice(pos,pos+rule.lenID)
-                out = rule.url.replace('{ID}',id)
+                var id = href.slice(pos,pos+rule.lenID)
+                var out = rule.url.replace('{ID}',id)
             }
         }
     }
@@ -82,10 +86,12 @@ function parseHref(href) {
 
 
 function createIframe(src) {
-    iframe = document.createElement('iframe')
+
+    var iframe = document.createElement('iframe')
 
     iframe.src = src
     iframe.setAttribute('allowfullscreen', true)
+    iframe.setAttribute('frameborder', 0)
     iframe.setAttribute('width', 400)
     iframe.setAttribute('height', 320)
 

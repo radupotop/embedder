@@ -90,10 +90,10 @@ function createIframe(src) {
     var iframe = document.createElement('iframe')
 
     iframe.src = src
-    iframe.setAttribute('allowfullscreen', true)
-    iframe.setAttribute('frameborder', 0)
-    iframe.setAttribute('width', 400)
-    iframe.setAttribute('height', 320)
+    iframe.style.width = '400px'
+    iframe.style.height = '320px'
+    iframe.style.borderWidth = '0px'
+    iframe.style.display = 'block'
 
     return iframe
 }

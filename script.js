@@ -1,46 +1,80 @@
-rules = {
-    0: {
-        'match': 'youtube\.com',
+/*
+ * Embedder
+ * --------
+ * A small JS video embedder.
+ * It can embed almost any video according to rules.
+ *
+ * Author: Radu Potop <wooptoo@gmail.com>
+ *
+
+    rule format:
+    {
+        'pattern': A HREF pattern, usually site domain
+        'search': string after which the video ID is found
+        'lenID': length of video ID
+        'url': embed URL with ID placeholder
+    }
+
+*/
+
+
+rules = [
+    {
+        'pattern': 'youtube\.com',
         'search': 'v=',
         'lenID': 11,
-        'out': 'http://www.youtube.com/embed/',
+        'url': 'http://www.youtube.com/embed/{ID}',
     },
-}
+    {
+        'pattern': 'youtu\.be',
+        'search': '.be/',
+        'lenID': 11,
+        'url': 'http://www.youtube.com/embed/{ID}',
+    },
+    {
+        'pattern': 'vimeo\.com',
+        'search': '.com/',
+        'lenID': 8,
+        'url': 'http://player.vimeo.com/video/{ID}',
+    },
+]
 
 
+/*
+ * auto start the script
+ */
+embedder()
 
 
-function embed() {
+function embedder() {
 
     len=document.links.length
     for(i=0; i<len; i++) {
         a=document.links[i]
 
-        iframe = createIframe(parseHref(a.href))
-        a.appendChild(iframe)
+        if(src=parseHref(a.href)) {
+            iframe = createIframe(src)
+            a.appendChild(iframe)
+        }
     }
 
 }
 
 
-function parseHref(inp) {
+function parseHref(href) {
 
-    if (inp.match(/youtube\.com/)) {
-        pos=inp.search('v=')
-        id=inp.slice(pos+2,pos+13)
-        out='http://www.youtube.com/embed/'+id
-    } else
-    if (inp.match(/youtu\.be/)) {
-        pos=inp.search('.be/')
-        id=inp.slice(pos+4,pos+15)
-        out='http://www.youtube.com/embed/'+id
-    } else
-    if (inp.match(/vimeo\.com/)) {
-        pos=inp.search('.com/')
-        id=inp.slice(pos+5,pos+16)
-        out='http://player.vimeo.com/video/'+id
-    } else {
-        out=null
+    out = null
+
+    for each (rule in rules) {
+        pattern = new RegExp(rule.pattern, 'i')
+        if (href.match(pattern)) {
+            pos = href.search(rule.search)
+            if(pos > -1) {
+                pos += rule.search.length
+                id = href.slice(pos,pos+rule.lenID)
+                out = rule.url.replace('{ID}',id)
+            }
+        }
     }
 
     return out
@@ -52,10 +86,8 @@ function createIframe(src) {
 
     iframe.src = src
     iframe.setAttribute('allowfullscreen', true)
-    iframe.setAttribute('width', 100)
-    iframe.setAttribute('height', 80)
+    iframe.setAttribute('width', 400)
+    iframe.setAttribute('height', 320)
 
     return iframe
 }
-
-embed()

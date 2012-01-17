@@ -1,10 +1,8 @@
 function embed() {
-    //~body=document.getElementsByTagName('body')[0]
 
-    aList = document.getElementsByTagName('a')
-
-    for(i=0,len=aList.length; i<len; i++) {
-        a=aList[i]
+    len=document.links.length
+    for(i=0; i<len; i++) {
+        a=document.links[i]
         if (a.href && a.href.match(/youtube\.com/)) {
 
             hrefNew = a.href.replace('watch?v=', 'embed/')
@@ -12,8 +10,6 @@ function embed() {
             if (pos > -1) { hrefNew = hrefNew.slice(0,pos) }
 
             iframe = createIframe(hrefNew)
-
-            console.log(iframe)
 
             a.appendChild(iframe)
             //~console.log(a.parentNode)

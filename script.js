@@ -2,7 +2,9 @@ function embed() {
     //~body=document.getElementsByTagName('body')[0]
 
     aList = document.getElementsByTagName('a')
-    for each (a in aList) {
+
+    for(i=0,len=aList.length; i<len; i++) {
+        a=aList[i]
         if (a.href && a.href.match(/youtube\.com/)) {
 
             hrefNew = a.href.replace('watch?v=', 'embed/')
@@ -17,6 +19,7 @@ function embed() {
             //~console.log(a.parentNode)
         }
     }
+
 }
 
 function createIframe(src) {

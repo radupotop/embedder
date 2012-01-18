@@ -5,6 +5,7 @@
  * It can embed almost any video according to rules.
  *
  * Author: Radu Potop <wooptoo@gmail.com>
+ * License: BSD
  *
 
     rule format:
@@ -51,13 +52,12 @@ function embedder() {
     var len=document.links.length
 
     for(var i=0; i<len; i++) {
-
         var a=document.links[i]
         var src=parseHref(a.href)
 
         if(src) {
             var iframe = createIframe(src)
-            a.appendChild(iframe)
+            insertAfter(iframe,a)
         }
     }
 
@@ -96,4 +96,16 @@ function createIframe(src) {
     iframe.style.display = 'block'
 
     return iframe
+}
+
+
+/*
+ * Credits to: http://blog.svidgen.com/2007/10/javascript-insertafter.html
+ * */
+function insertAfter(new_node, existing_node) {
+    if (existing_node.nextSibling) {
+        existing_node.parentNode.insertBefore(new_node, existing_node.nextSibling);
+    } else {
+        existing_node.parentNode.appendChild(new_node);
+    }
 }

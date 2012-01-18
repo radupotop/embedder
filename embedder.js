@@ -90,8 +90,8 @@ function createIframe(src) {
     var iframe = document.createElement('iframe')
 
     iframe.src = src
-    iframe.style.width = '400px'
-    iframe.style.height = '320px'
+    iframe.style.width = '500px'
+    iframe.style.height = '375px'
     iframe.style.borderWidth = '0px'
     iframe.style.display = 'block'
 

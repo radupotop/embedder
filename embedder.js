@@ -91,8 +91,8 @@ function createIframe(src) {
     var iframe = document.createElement('iframe');
 
     iframe.src = src;
-    iframe.style.width = '500px';
-    iframe.style.height = '375px';
+    iframe.style.width = '640px';
+    iframe.style.height = '390px';
     iframe.style.borderWidth = '0px';
     iframe.style.display = 'block';
 

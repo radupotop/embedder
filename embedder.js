@@ -21,19 +21,19 @@
 
 var rules = [
     {
-        'pattern': 'youtube\\.com',
+        'pattern': /youtube\.com/i,
         'search': 'v=',
         'lenID': 11,
         'url': 'http://www.youtube.com/embed/{ID}'
     },
     {
-        'pattern': 'youtu\\.be',
+        'pattern': /youtu\.be/i,
         'search': '.be/',
         'lenID': 11,
         'url': 'http://www.youtube.com/embed/{ID}'
     },
     {
-        'pattern': 'vimeo\\.com',
+        'pattern': /vimeo\.com/i,
         'search': '.com/',
         'lenID': 8,
         'url': 'http://player.vimeo.com/video/{ID}'
@@ -49,9 +49,7 @@ embedder();
 
 function embedder() {
 
-    var len=document.links.length;
-
-    for(var i=0; i<len; i++) {
+    for(var i=0; i<document.links.length; i++) {
         var a=document.links[i];
         var src=parseHref(a.href);
 
@@ -66,13 +64,11 @@ function embedder() {
 
 function parseHref(href) {
 
-    var len=rules.length;
     var out;
 
-    for (var i=0; i<len; i++) {
+    for (var i=0; i<rules.length; i++) {
         var rule = rules[i];
-        var pattern = new RegExp(rule.pattern, 'i');
-        if (href.match(pattern)) {
+        if (href.match(rule.pattern)) {
             var pos = href.search(rule.search);
             if(pos > -1) {
                 pos += rule.search.length;

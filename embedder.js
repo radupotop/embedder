@@ -1,4 +1,4 @@
-/*
+/**
  * Embedder
  * --------
  * A small JS video embedder.
@@ -7,48 +7,37 @@
  * Author: Radu Potop <radu.potop@wooptoo.com>
  * License: BSD
  *
+ */
+(function(document){
 
-    rule format:
-    {
-        'pattern': A HREF pattern, usually site domain
-        'search': string after which the video ID is found
-        'lenID': length of video ID
-        'url': embed URL with ID placeholder
-    }
-
-*/
-
-
+/**
+ * Parsing rules
+ */
 var rules = [
     {
-        'pattern': /youtube\.com/i,
-        'search': 'v=',
-        'lenID': 11,
+        'pattern': /youtube\.com\/.*v=(.{11})/i,
         'url': 'http://www.youtube.com/embed/{ID}'
     },
     {
-        'pattern': /youtu\.be/i,
-        'search': '.be/',
-        'lenID': 11,
+        'pattern': /youtu\.be\/(.{11})/i,
         'url': 'http://www.youtube.com/embed/{ID}'
     },
     {
-        'pattern': /vimeo\.com/i,
-        'search': '.com/',
-        'lenID': 8,
+        'pattern': /vimeo\.com\/(.{8})/i,
         'url': 'http://player.vimeo.com/video/{ID}'
     }
 ];
 
-
-/*
- * auto start the script
+/**
+ * Auto start the script
  */
 embedder();
 
-
+/**
+ * Run parser over all the links in the document
+ */
 function embedder() {
-
+    
     for(var i=0; i<document.links.length; i++) {
         var a=document.links[i];
         var src=parseHref(a.href);
@@ -58,30 +47,27 @@ function embedder() {
             insertAfter(iframe,a);
         }
     }
-
+    
 }
 
-
+/**
+ * Parse each href attribute and extract the video ID
+ */
 function parseHref(href) {
-
-    var out;
-
+    
     for (var i=0; i<rules.length; i++) {
         var rule = rules[i];
-        if (href.match(rule.pattern)) {
-            var pos = href.search(rule.search);
-            if(pos > -1) {
-                pos += rule.search.length;
-                var id = href.slice(pos,pos+rule.lenID);
-                out = rule.url.replace('{ID}',id);
-            }
+        var match = href.match(rule.pattern);
+        if (match) {
+            return rule.url.replace('{ID}', match.slice(1).join(''));
         }
     }
-
-    return out;
+    
 }
 
-
+/**
+ * Create iframe element for each video
+ */
 function createIframe(src) {
 
     var iframe = document.createElement('iframe');
@@ -95,9 +81,9 @@ function createIframe(src) {
     return iframe;
 }
 
-
-
-// Credits to: http://blog.svidgen.com/2007/10/javascript-insertafter.html
+/**
+ * Insert after node
+ */
 function insertAfter(new_node, existing_node) {
     if (existing_node.nextSibling) {
         existing_node.parentNode.insertBefore(new_node, existing_node.nextSibling);
@@ -105,3 +91,5 @@ function insertAfter(new_node, existing_node) {
         existing_node.parentNode.appendChild(new_node);
     }
 }
+
+})(document);

@@ -31,6 +31,10 @@ var rules = [
     {
         'pattern': /vimeo\.com\/(.{8})/i,
         'url': 'http://player.vimeo.com/video/{ID}'
+    },
+    {
+        'pattern': /ted.com\/talks\/([a-z0-9_-]+)\.html/i,
+        'url': 'http://embed.ted.com/talks/{ID}.html'
     }
 ];
 

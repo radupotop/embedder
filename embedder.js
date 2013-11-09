@@ -21,19 +21,19 @@
  */
 var rules = [
     {
-        'pattern': /youtube\.com\/.*v=(.{11})/i,
+        'pattern': /youtube\.com\/.*v=([\w\-]{11})/i,
         'url': 'http://www.youtube.com/embed/{ID}'
     },
     {
-        'pattern': /youtu\.be\/(.{11})/i,
+        'pattern': /youtu\.be\/([\w\-]{11})/i,
         'url': 'http://www.youtube.com/embed/{ID}'
     },
     {
-        'pattern': /vimeo\.com\/([0-9]{7,8})/i,
+        'pattern': /vimeo\.com\/([\d]{7,8})/i,
         'url': 'http://player.vimeo.com/video/{ID}'
     },
     {
-        'pattern': /ted.com\/talks\/([a-z0-9_-]+)\.html/i,
+        'pattern': /ted.com\/talks\/([\w\-]+)\.html/i,
         'url': 'http://embed.ted.com/talks/{ID}.html'
     }
 ];

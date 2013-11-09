@@ -29,7 +29,7 @@ var rules = [
         'url': 'http://www.youtube.com/embed/{ID}'
     },
     {
-        'pattern': /vimeo\.com\/([0-9]{8})/i,
+        'pattern': /vimeo\.com\/([0-9]{7,8})/i,
         'url': 'http://player.vimeo.com/video/{ID}'
     },
     {

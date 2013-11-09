@@ -12,6 +12,12 @@
 
 /**
  * Parsing rules
+ * 
+ * Format
+ * {
+ *    'pattern': Match links against pattern. Video ID must be in a regex group.
+ *    'url': Embed iframe URL with ID placeholder.
+ * }
  */
 var rules = [
     {

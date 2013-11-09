@@ -87,6 +87,7 @@ function createIframe(src) {
     iframe.style.height = '390px';
     iframe.style.borderWidth = '0px';
     iframe.style.display = 'block';
+    iframe.scrolling = 'no';
 
     return iframe;
 }

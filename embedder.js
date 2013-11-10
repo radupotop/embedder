@@ -39,7 +39,7 @@ var rules = [
         'url': 'http://embed.ted.com/talks/{ID}.html'
     },
     {
-        'pattern': /(soundcloud\.com\/[\w\-]+\/[\w\-]+)/i,
+        'pattern': /(soundcloud\.com\/[\w\-]+\/[\w\-]+)$/i,
         'url': 'http://w.soundcloud.com/player/?url={ID}',
         'height': '166px'
     }

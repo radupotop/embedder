@@ -23,31 +23,40 @@
  */
 var rules = [
     {
-        'pattern': /youtube\.com\/.*v=([\w\-]{11})/i,
-        'url': 'http://www.youtube.com/embed/{ID}'
+        'pattern': /.*youtube\.com\/.*v=([\w\-]{11}).*/i,
+        'url': 'http://www.youtube.com/embed/$1'
     },
     {
-        'pattern': /youtu\.be\/([\w\-]{11})/i,
-        'url': 'http://www.youtube.com/embed/{ID}'
+        'pattern': /.*youtu\.be\/([\w\-]{11}).*/i,
+        'url': 'http://www.youtube.com/embed/$1'
     },
     {
-        'pattern': /vimeo\.com\/([\d]{7,8})/i,
-        'url': 'http://player.vimeo.com/video/{ID}'
+        'pattern': /.*youtube\.com\/.*list=([\w\-]{34}|[\w\-]{18})?.*/i,
+        'url': 'http://www.youtube.com/embed/?list=$1'
     },
     {
-        'pattern': /ted.com\/talks\/([\w\-]+)\.html/i,
-        'url': 'http://embed.ted.com/talks/{ID}.html'
+        'pattern': /.*vimeo\.com\/([\d]{7,8}).*/i,
+        'url': 'http://player.vimeo.com/video/$1'
     },
     {
-        'pattern': /(soundcloud\.com\/[\w\-]+\/[\w\-]+)$/i,
-        'url': 'http://w.soundcloud.com/player/?url={ID}',
+        'pattern': /.*ted.com\/talks\/([\w\-]+)\.html.*/i,
+        'url': 'http://embed.ted.com/talks/$1.html'
+    },
+    {
+        'pattern': /(.*soundcloud\.com\/[\w\-]+\/sets\/[\w\-]+).*/i,
+        'url': 'http://w.soundcloud.com/player/?url=$1'
+    },
+    {
+        'pattern': /(.*soundcloud\.com\/[\w\-]+\/[\w\-]+).*/i,
+        'url': 'http://w.soundcloud.com/player/?url=$1',
         'height': '166px'
-    },
-    {
-        'pattern': /(soundcloud\.com\/[\w\-]+\/sets\/[\w\-]+)$/i,
-        'url': 'http://w.soundcloud.com/player/?url={ID}'
     }
 ];
+
+/**
+ * Do not embed links that match this pattern
+ */
+var noembed = /#noembed/;
 
 /**
  * Auto start the script
@@ -78,10 +87,10 @@ function parseHref(href) {
     
     for (var i=0; i<rules.length; i++) {
         var rule = rules[i];
-        var match = href.match(rule.pattern);
-        if (match) {
+        
+        if (!href.match(noembed) && href.match(rule.pattern)) {
             return {
-                'src': rule.url.replace('{ID}', match.slice(1).join('')),
+                'src': href.replace(rule.pattern, rule.url),
                 'i': i
             };
         }

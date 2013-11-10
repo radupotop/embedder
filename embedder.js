@@ -39,15 +39,15 @@ var rules = [
         'url': 'http://player.vimeo.com/video/$1'
     },
     {
-        'pattern': /.*ted.com\/talks\/([\w\-]+)\.html.*/i,
-        'url': 'http://embed.ted.com/talks/$1.html'
+        'pattern': /.*ted\.com\/talks\/([\w\-]+\.html).*/i,
+        'url': 'http://embed.ted.com/talks/$1'
     },
     {
-        'pattern': /(.*soundcloud\.com\/[\w\-]+\/sets\/[\w\-]+).*/i,
+        'pattern': /.*(soundcloud\.com\/[\w\-]+\/sets\/[\w\-]+).*/i,
         'url': 'http://w.soundcloud.com/player/?url=$1'
     },
     {
-        'pattern': /(.*soundcloud\.com\/[\w\-]+\/[\w\-]+).*/i,
+        'pattern': /.*(soundcloud\.com\/[\w\-]+\/[\w\-]+).*/i,
         'url': 'http://w.soundcloud.com/player/?url=$1',
         'height': '166px'
     }

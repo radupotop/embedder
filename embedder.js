@@ -17,6 +17,8 @@
  * {
  *    'pattern': Match links against pattern. Video ID must be in a regex group.
  *    'url': Embed iframe URL with ID placeholder.
+ *    'width': Optional, override embed width.
+ *    'height': Optional, override height.
  * }
  */
 var rules = [
@@ -35,6 +37,11 @@ var rules = [
     {
         'pattern': /ted.com\/talks\/([\w\-]+)\.html/i,
         'url': 'http://embed.ted.com/talks/{ID}.html'
+    },
+    {
+        'pattern': /(soundcloud\.com\/[\w\-]+\/[\w\-]+)/i,
+        'url': 'http://w.soundcloud.com/player/?url={ID}',
+        'height': '166px'
     }
 ];
 
@@ -69,7 +76,10 @@ function parseHref(href) {
         var rule = rules[i];
         var match = href.match(rule.pattern);
         if (match) {
-            return rule.url.replace('{ID}', match.slice(1).join(''));
+            return {
+                'src': rule.url.replace('{ID}', match.slice(1).join('')),
+                'i': i
+            };
         }
     }
     
@@ -82,9 +92,11 @@ function createIframe(src) {
 
     var iframe = document.createElement('iframe');
 
-    iframe.src = src;
-    iframe.style.width = '640px';
-    iframe.style.height = '390px';
+    iframe.src = src.src;
+    
+    iframe.style.width = rules[src.i].width || '640px';
+    iframe.style.height = rules[src.i].height || '390px';
+    
     iframe.style.borderWidth = '0px';
     iframe.style.display = 'block';
     iframe.scrolling = 'no';

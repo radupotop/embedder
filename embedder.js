@@ -31,7 +31,7 @@ var rules = [
         'url': 'http://www.youtube.com/embed/$1'
     },
     {
-        'pattern': /.*youtube\.com\/.*list=([\w\-]{34}|[\w\-]{18})?.*/i,
+        'pattern': /.*youtube\.com\/.*list=([\w\-]{34}|[\w\-]{18}).*/i,
         'url': 'http://www.youtube.com/embed/?list=$1'
     },
     {

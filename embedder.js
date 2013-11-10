@@ -42,6 +42,10 @@ var rules = [
         'pattern': /(soundcloud\.com\/[\w\-]+\/[\w\-]+)$/i,
         'url': 'http://w.soundcloud.com/player/?url={ID}',
         'height': '166px'
+    },
+    {
+        'pattern': /(soundcloud\.com\/[\w\-]+\/sets\/[\w\-]+)$/i,
+        'url': 'http://w.soundcloud.com/player/?url={ID}'
     }
 ];
 

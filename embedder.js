@@ -56,7 +56,7 @@ var rules = [
 /**
  * Do not embed links that match this pattern
  */
-var noembed = /#noembed/;
+var noembed = /#noembed$/;
 
 /**
  * Auto start the script

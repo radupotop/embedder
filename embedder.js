@@ -91,7 +91,7 @@ function parseHref(href) {
     for (var i=0; i<rules.length; i++) {
         var rule = rules[i];
         
-        if (!href.match(noembed) && href.match(rule.pattern)) {
+        if (!noembed.test(href) && rule.pattern.test(href)) {
             return {
                 'src': href.replace(rule.pattern, rule.url),
                 'i': i

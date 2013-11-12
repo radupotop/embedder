@@ -1,7 +1,7 @@
 /**
  * Embedder https://github.com/wooptoo/embedder
  * @author Radu Potop <radu.potop@wooptoo.com>
- * @license BSD
+ * @license MIT
  */
 /**
  * A small JavaScript video embedder.

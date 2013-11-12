@@ -1,0 +1,7 @@
+{
+  "name": "embedder",
+  "version": "1.2.0",
+  "main": "./embedder.js",
+  "dependencies": {
+  }
+}

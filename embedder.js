@@ -23,7 +23,7 @@
  */
 var rules = [
     {
-        'pattern': /.*youtube\.com\/.*v=([\w\-]{11}).*list=([\w\-]{34}|[\w\-]{18}).*/i,
+        'pattern': /.*youtube\.com\/.*(?=.*v=([\w\-]{11})).*(?=.*list=([\w\-]{34}|[\w\-]{18})).*/i,
         'url': 'http://www.youtube.com/embed/$1?list=$2'
     },
     {

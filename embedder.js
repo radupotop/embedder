@@ -1,12 +1,11 @@
 /**
- * Embedder
- * --------
- * A small JS video embedder.
+ * Embedder https://github.com/wooptoo/embedder
+ * @author Radu Potop <radu.potop@wooptoo.com>
+ * @license BSD
+ */
+/**
+ * A small JavaScript video embedder.
  * It can embed almost any video according to rules.
- *
- * Author: Radu Potop <radu.potop@wooptoo.com>
- * License: BSD
- *
  */
 (function(document){
 

@@ -1,6 +1,10 @@
 {
   "name": "embedder",
   "version": "1.2.0",
+  "license": "MIT",
+  "description": "A small JavaScript video embedder",
+  "keywords": ["embed", "video"],
+  "homepage": "https://github.com/wooptoo/embedder",
   "main": "./embedder.js",
   "dependencies": {
   }

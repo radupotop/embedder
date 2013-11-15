@@ -22,7 +22,7 @@
  */
 var rules = [
     {
-        'pattern': /.*youtube\.com\/.*(?=.*v=([\w\-]{11})).*(?=.*list=([\w\-]{34}|[\w\-]{18})).*/i,
+        'pattern': /.*youtube\.com\/.*(?=.*v=([\w\-]{11})).*(?=.*list=([\w\-]+)).*/i,
         'url': 'http://www.youtube.com/embed/$1?list=$2'
     },
     {
@@ -34,7 +34,7 @@ var rules = [
         'url': 'http://www.youtube.com/embed/$1'
     },
     {
-        'pattern': /.*youtube\.com\/.*list=([\w\-]{34}|[\w\-]{18}).*/i,
+        'pattern': /.*youtube\.com\/.*list=([\w\-]+).*/i,
         'url': 'http://www.youtube.com/embed/?list=$1'
     },
     {

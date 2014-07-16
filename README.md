@@ -20,4 +20,6 @@ Changelog
 
 16.07.2014
 
-Added support for Kickstarter videos.
+* Added support for Kickstarter videos.
+* 16:9 aspect ratio.
+

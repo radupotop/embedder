@@ -53,6 +53,10 @@ var rules = [
     {
         'pattern': /.*ted\.com\/talks\/([\w\-]+\.html).*/i,
         'url': 'http://embed.ted.com/talks/$1'
+    },
+    {
+        'pattern': /.*(kickstarter\.com\/projects\/[\d]+\/[\w\-]+).*/i,
+        'url': 'http://$1/widget/video.html'
     }
 ];
 

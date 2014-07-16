@@ -55,7 +55,7 @@ var rules = [
         'url': 'http://embed.ted.com/talks/$1'
     },
     {
-        'pattern': /.*(kickstarter\.com\/projects\/[\d]+\/[\w\-]+).*/i,
+        'pattern': /.*(kickstarter\.com\/projects\/[\w\-]+\/[\w\-]+).*/i,
         'url': 'http://$1/widget/video.html'
     }
 ];

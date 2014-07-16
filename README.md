@@ -8,8 +8,16 @@ For now it supports:
 * Vimeo videos
 * Soundcloud tracks and playlists
 * TED videos
+* Kickstarter videos
 
 To skip embedding a certain video add `#noembed` at the end of the URL.
 
 To run just download the script and include it in your page.
 
+
+Changelog
+=========
+
+16.07.2014
+
+Added support for Kickstarter videos.

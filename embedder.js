@@ -114,8 +114,8 @@ function createIframe(src) {
 
     iframe.src = src.src;
     
-    iframe.style.width = rules[src.i].width || '640px';
-    iframe.style.height = rules[src.i].height || '390px';
+    iframe.style.width = rules[src.i].width || '711px';
+    iframe.style.height = rules[src.i].height || '400px';
     
     iframe.style.borderWidth = '0px';
     iframe.style.display = 'block';

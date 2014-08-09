@@ -38,7 +38,7 @@ var rules = [
         'url': 'http://www.youtube.com/embed/?list=$1'
     },
     {
-        'pattern': /.*vimeo\.com\/([\d]{7,8}).*/i,
+        'pattern': /.*vimeo\.com\/([\d]+).*/i,
         'url': 'http://player.vimeo.com/video/$1'
     },
     {

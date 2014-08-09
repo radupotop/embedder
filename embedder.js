@@ -22,15 +22,15 @@
  */
 var rules = [
     {
-        'pattern': /.*youtube\.com\/.*(?=.*v=([\w\-]{11})).*(?=.*list=([\w\-]+)).*/i,
+        'pattern': /.*youtube\.com\/.*(?=.*v=([\w\-]+)).*(?=.*list=([\w\-]+)).*/i,
         'url': 'http://www.youtube.com/embed/$1?list=$2'
     },
     {
-        'pattern': /.*youtube\.com\/.*v=([\w\-]{11}).*/i,
+        'pattern': /.*youtube\.com\/.*v=([\w\-]+).*/i,
         'url': 'http://www.youtube.com/embed/$1'
     },
     {
-        'pattern': /.*youtu\.be\/([\w\-]{11}).*/i,
+        'pattern': /.*youtu\.be\/([\w\-]+).*/i,
         'url': 'http://www.youtube.com/embed/$1'
     },
     {

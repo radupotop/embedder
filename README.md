@@ -14,6 +14,8 @@ To skip embedding a certain video add `#noembed` at the end of the URL.
 
 To run just download the script and include it in your page.
 
+License: MIT
+
 
 Changelog
 =========

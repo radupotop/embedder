@@ -57,6 +57,10 @@ var rules = [
     {
         'pattern': /.*(kickstarter\.com\/projects\/[\w\-]+\/[\w\-]+).*/i,
         'url': 'http://$1/widget/video.html'
+    },
+    {
+        'pattern': /.*(imdb\.com\/video\/imdb\/[\w]+).*/i,
+        'url': 'http://$1/imdb/embed?autoplay=false&width=711'
     }
 ];
 

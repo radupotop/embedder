@@ -21,6 +21,10 @@ License: MIT
 Changelog
 =========
 
+27.08.2014
+
+* Added support for Vimeo videos linked from a channel.
+
 12.08.2014
 
 * Added support for IMDB videos.

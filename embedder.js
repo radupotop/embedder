@@ -42,6 +42,10 @@ var rules = [
         'url': 'http://player.vimeo.com/video/$1'
     },
     {
+        'pattern': /.*vimeo\.com\/channels\/[\w\-]+\/([\d]+).*/i,
+        'url': 'http://player.vimeo.com/video/$1'
+    },
+    {
         'pattern': /.*(soundcloud\.com\/[\w\-]+\/sets\/[\w\-]+).*/i,
         'url': 'http://w.soundcloud.com/player/?url=$1'
     },

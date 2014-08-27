@@ -9,6 +9,7 @@ For now it supports:
 * Soundcloud tracks and playlists
 * TED videos
 * Kickstarter videos
+* IMDB videos
 
 To skip embedding a certain video add `#noembed` at the end of the URL.
 

@@ -11,7 +11,7 @@
 
 /**
  * Parsing rules
- * 
+ *
  * Format
  * {
  *    'pattern': Match links against pattern. Video ID must be in a regex group.
@@ -65,6 +65,15 @@ var rules = [
     {
         'pattern': /.*(imdb\.com\/video\/imdb\/[\w]+).*/i,
         'url': 'http://$1/imdb/embed?autoplay=false&width=711'
+    },
+    {
+        'pattern': /.*jamendo\.com\/[\w]+\/track\/([\d]+).*/i,
+        'url': 'http://widgets.jamendo.com/v3/track/$1?autoplay=0&layout=standard&manualWidth=711&width=711&theme=light',
+        'height': '166px'
+    },
+    {
+        'pattern': /.*jamendo\.com\/[\w]+\/list\/a([\d]+).*/i,
+        'url': 'http://widgets.jamendo.com/v3/album/$1?autoplay=0&layout=standard&manualWidth=711&width=711&theme=light&tracklist=true'
     }
 ];
 
@@ -82,7 +91,7 @@ embedder();
  * Run parser over all the links in the document
  */
 function embedder() {
-    
+
     for(var i=0; i<document.links.length; i++) {
         var a=document.links[i];
         var src=parseHref(a.href);
@@ -92,17 +101,17 @@ function embedder() {
             insertAfter(iframe,a);
         }
     }
-    
+
 }
 
 /**
  * Parse each href attribute and extract the video ID
  */
 function parseHref(href) {
-    
+
     for (var i=0; i<rules.length; i++) {
         var rule = rules[i];
-        
+
         if (!noembed.test(href) && rule.pattern.test(href)) {
             return {
                 'src': href.replace(rule.pattern, rule.url),
@@ -110,7 +119,7 @@ function parseHref(href) {
             };
         }
     }
-    
+
 }
 
 /**
@@ -121,10 +130,10 @@ function createIframe(src) {
     var iframe = document.createElement('iframe');
 
     iframe.src = src.src;
-    
+
     iframe.style.width = rules[src.i].width || '711px';
     iframe.style.height = rules[src.i].height || '400px';
-    
+
     iframe.style.borderWidth = '0px';
     iframe.style.display = 'block';
     iframe.scrolling = 'no';

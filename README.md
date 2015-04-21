@@ -22,6 +22,10 @@ License: MIT
 Changelog
 =========
 
+21.04.2015
+
+* Added support for Jamendo tracks and albums.
+
 27.08.2014
 
 * Added support for Vimeo videos linked from a channel.

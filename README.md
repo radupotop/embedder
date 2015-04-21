@@ -10,6 +10,7 @@ For now it supports:
 * TED videos
 * Kickstarter videos
 * IMDB videos
+* Jamendo tracks and albums
 
 To skip embedding a certain video add `#noembed` at the end of the URL.
 

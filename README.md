@@ -18,6 +18,8 @@ To run just download the script and include it in your page.
 
 License: MIT
 
+[Demo](http://demo.wooptoo.com/embedder/)
+======
 
 Changelog
 =========
